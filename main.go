@@ -13,7 +13,7 @@ func middleware(c *fiber.Ctx) error {
 }
 
 func main() {
-	configuration.ServerConfiguration.Load()
+	configuration.ServerConfiguration.Load(".env")
 	configuration.ServerConfiguration.Print()
 	database.MI.Connect()
 
