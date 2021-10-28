@@ -14,7 +14,7 @@ type Location struct {
 
 type Plant struct {
 	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	Type_       string             `bson:"type__" json:"type__"`
+	Type_       string             `bson:"type" json:"type"`
 	Name        string             `bson:"name" json:"name"`
 	Location    Location           `bson:"location" json:"location"`
 	Description string             `bson:"description" json:"description"`
@@ -22,8 +22,8 @@ type Plant struct {
 
 type Sensor struct {
 	ID   primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	Name string
-	Unit string
+	Name string             `bson:"name" json:"name"`
+	Unit string             `bson:"unit" json:"unit"`
 }
 
 type Measurement struct {
