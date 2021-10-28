@@ -8,8 +8,7 @@ import (
 	"plant_monitor/database"
 )
 
-func middleware (c *fiber.Ctx) error {
-	fmt.Println("Middleware called")
+func middleware(c *fiber.Ctx) error {
 	return c.Next()
 }
 
