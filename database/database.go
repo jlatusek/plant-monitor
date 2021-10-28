@@ -45,6 +45,22 @@ func (db *MongoInstance) Connect() {
 	db.collection = db.client.Database(configuration.ServerConfiguration.DbName).Collection(configuration.ServerConfiguration.DbName)
 }
 
+func (db *MongoInstance) DropAllCollections() {
+	ctx, cancel := db.GetControllerContext()
+	defer cancel()
+	result, err := db.Db.ListCollectionNames(ctx, bson.D{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for i := range result {
+		fmt.Println(i)
+		err = db.Db.Collection(result[i]).Drop(ctx)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+}
+
 func (db MongoInstance) ListDatabases() {
 	databases, err := db.client.ListDatabases(db.ctx, bson.M{})
 	if err != nil {
