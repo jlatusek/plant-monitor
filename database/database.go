@@ -13,11 +13,10 @@ import (
 )
 
 type MongoInstance struct {
-	client     *mongo.Client
-	Db         *mongo.Database
-	ctx        context.Context
-	collection *mongo.Collection
-	database   *mongo.Database
+	client   *mongo.Client
+	Db       *mongo.Database
+	ctx      context.Context
+	database *mongo.Database
 }
 
 var MI MongoInstance
@@ -42,7 +41,7 @@ func (db *MongoInstance) Connect() {
 		log.Fatal(err)
 	}
 	fmt.Println("Connected to MongoDB!")
-	db.collection = db.client.Database(configuration.ServerConfiguration.DbName).Collection(configuration.ServerConfiguration.DbName)
+	db.Db = db.client.Database(configuration.ServerConfiguration.DbName)
 }
 
 func (db *MongoInstance) DropAllCollections() {
