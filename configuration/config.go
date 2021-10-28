@@ -19,8 +19,9 @@ type Configuration struct {
 
 var ServerConfiguration Configuration
 
-func (conf *Configuration) Load() {
-	err := godotenv.Load()
+func (conf *Configuration) Load(envPath string) {
+	err := godotenv.Load(envPath)
+	fmt.Println(os.Getwd())
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
