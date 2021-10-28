@@ -8,8 +8,8 @@ import (
 )
 
 type Location struct {
-	Latitude  int `bson:"latitude,omitempty" json:"latitude"`
-	Longitude int `bson:"longitude,omitempty" json:"longitude"`
+	Latitude  float32 `bson:"latitude,omitempty" json:"latitude"`
+	Longitude float32 `bson:"longitude,omitempty" json:"longitude"`
 }
 
 type Plant struct {
