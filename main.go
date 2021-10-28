@@ -16,6 +16,7 @@ func main() {
 	configuration.ServerConfiguration.Load(".env")
 	configuration.ServerConfiguration.Print()
 	database.MI.Connect()
+	database.MI.ListDatabases()
 
 	app := fiber.New()
 	app.Get("/", func(c *fiber.Ctx) error {
