@@ -25,6 +25,7 @@ func main() {
 	v1 := api.Group("/v1", middleware)
 
 	plant := v1.Group("plant", middleware)
+	plant.Get("/", controllers.GetPlantAll)
 	plant.Get("/:id", controllers.GetPlant)
 
 	err := app.Listen(":3000")
