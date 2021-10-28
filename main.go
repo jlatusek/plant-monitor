@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"log"
 	"plant_monitor/configuration"
 	"plant_monitor/controllers"
 	"plant_monitor/database"
@@ -28,7 +28,10 @@ func main() {
 	plant := v1.Group("plant", middleware)
 	plant.Get("/:id", controllers.GetPlant)
 
-	app.Listen(":3000")
+	err := app.Listen(":3000")
+	if err != nil {
+		log.Println(err)
+	}
 	database.MI.Disconnect()
 }
 
